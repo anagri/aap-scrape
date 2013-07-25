@@ -3,7 +3,6 @@ package com.creativei.aap;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
 import java.io.File;
-import java.io.FilenameFilter;
 
 import static java.lang.String.format;
 
@@ -15,7 +14,7 @@ public class AapDonationPage {
     public AapDonationPage(RemoteWebDriver driver, File outputFolder) {
         this.driver = driver;
         this.outputFolder = outputFolder;
-        pageIndexToScrape = nextIndex();
+        pageIndexToScrape = Utils.fileIndex(outputFolder);
     }
 
     public void startOrContinueScrape() {
@@ -50,19 +49,5 @@ public class AapDonationPage {
     private void save(int pageNumber) {
         Utils.writeToFile(driver.getPageSource(), format("%s/html-%d.html", outputFolder.getAbsolutePath(), pageNumber));
         Utils.writeTextToFile(format("%s/text-%d.html", outputFolder.getAbsolutePath(), pageNumber), driver.findElementByTagName("body").getText());
-    }
-
-    private int nextIndex() {
-        File[] htmls = outputFolder.listFiles(new FilenameFilter() {
-            @Override
-            public boolean accept(File file, String s) {
-                return s.startsWith("html");
-            }
-        });
-        int max = 1;
-        for (File html : htmls) {
-            max = Math.max(max, Integer.parseInt(html.getName().split("-")[1].replace(".html", "")));
-        }
-        return max;
     }
 }
