@@ -1,0 +1,42 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<html>
+<head>
+    <script src="d3.v3.min.js" charset="utf-8"></script>
+    <title></title>
+</head>
+<body onload="initAmountMap();">
+<h2>Visualization of AAP Donations District Wise - Total Amount Donated by a District</h2>
+<h3>Last Updated: Jul 22 2013  2:31PM</h3>
+<iframe src="india-districts.svg" style="border: none; float: left;" height="800 px" width="700 px"></iframe>
+<div style="width: 300px; float: left; margin-top: 100px">
+    <div id="infobox">
+        <div>
+            <span style="display: inline-block; width: 100px;">State: </span>
+            <span id="state"></span>
+        </div>
+        <div>
+            <span style="display: inline-block; width: 100px;">District: </span>
+            <span id="district"></span>
+        </div>
+        <div>
+            <span style="display: inline-block; width: 100px;"># Of Donors: </span>
+            <span id="donors"></span>
+        </div>
+        <div>
+            <span style="display: inline-block; width: 100px;">Total Amount: </span>
+            <span id="amount"></span>
+        </div>
+        <div>
+            <div><span style="display: inline-block; width: 100px"></span></div>
+        </div>
+        <div>
+            <span style="display: inline-block; width: 100px;">Avg Amount: </span>
+            <span id="avg_amount"></span>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="map-aap.js"></script>
+
+</body>
+</html>
